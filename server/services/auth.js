@@ -81,5 +81,12 @@ function login({ email, password, req }) {
   });
 }
 
-module.exports = { signup, login };
+function logout({ req }) {
+  return new Promise((resolve, reject) => {
+    const { user } = req;
+    req.logout();
+    resolve(user);
+  });
+};
+module.exports = { signup, login, logout };
   
